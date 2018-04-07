@@ -1,7 +1,7 @@
-# MachineLeraningAssignment
+# MachineLearningAssignment
 
-Machine Learning
 Programming Assignment
+
 You may apply any learning algorithm (under supervised, unsupervised or reinforcement learning) to
 solve any real-world problem based on any real-world dataset. You may use a dataset of your own or
 use a publicly available dataset from a source like the following one (you can choose any other data
