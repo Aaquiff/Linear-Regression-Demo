@@ -1,6 +1,6 @@
 import csv
 
-with open('data.csv') as csvfile:
+with open('insurance.csv') as csvfile:
     readCSV = csv.reader(csvfile, delimiter=',')
     for row in readCSV:
         print(row)
