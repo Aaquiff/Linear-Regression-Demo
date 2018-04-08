@@ -1,8 +1,34 @@
-import csv
+# Starting Script
+print("Starting Script")
 
-with open('insurance.csv') as csvfile:
-    readCSV = csv.reader(csvfile, delimiter=',')
-    for row in readCSV:
-        print(row)
-        print(row[0])
-        print(row[0],row[1],row[2],)
+import numpy as np
+from sklearn import datasets, linear_model
+
+# Function to read file into array
+def readMyFile(filename):
+    import csv
+    data = []
+ 
+    with open(filename) as csvDataFile:
+        csvReader = csv.reader(csvDataFile)
+        for row in csvReader:
+            data.append(row)
+ 
+    return data
+ 
+# Linear Regression TODO
+ 
+# data = readMyFile('insurance.csv')
+
+# dataTrain = data[:-20]
+# dataTest = data[:-20]
+
+# a = np.array(data)
+
+# b = a.data[0:2]
+
+# print(b)
+
+diabetes = datasets.load_diabetes()
+
+print(diabetes)
