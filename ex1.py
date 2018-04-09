@@ -18,17 +18,13 @@ def readMyFile(filename):
  
 # Linear Regression TODO
  
-# data = readMyFile('insurance.csv')
+data = readMyFile('insurance.csv')
 
-# dataTrain = data[:-20]
-# dataTest = data[:-20]
+dataTrain = data[:-20]
+dataTest = data[:-20]
 
-# a = np.array(data)
+a = np.array(data)
 
-# b = a.data[0:2]
+b = a.data[0:2]
 
-# print(b)
-
-diabetes = datasets.load_diabetes()
-
-print(diabetes)
+print(b)
