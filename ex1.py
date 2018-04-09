@@ -2,29 +2,37 @@
 print("Starting Script")
 
 import numpy as np
-from sklearn import datasets, linear_model
+from sklearn import datasets, linear_model, preprocessing, cross_validation, svm
+import pandas
+import math
+from sklearn.linear_model import LinearRegression
 
-# Function to read file into array
-def readMyFile(filename):
-    import csv
-    data = []
- 
-    with open(filename) as csvDataFile:
-        csvReader = csv.reader(csvDataFile)
-        for row in csvReader:
-            data.append(row)
- 
-    return data
- 
-# Linear Regression TODO
- 
-data = readMyFile('insurance.csv')
+filename = 'insurance.csv'
+names = ['age', 'sex', 'bmi', 'children', 'smoker', 'region', 'charges']
+df = pandas.read_csv(filename, names=names)
 
-dataTrain = data[:-20]
-dataTest = data[:-20]
+df = df[['age','charges']]
 
-a = np.array(data)
+# print(df.head())
 
-b = a.data[0:2]
+forecase_col = 'charges'
 
-print(b)
+forecast_out = int(math.ceil(0.01*len(df)))
+
+df['label'] = df[forecase_col].shift(-forecast_out)
+df.dropna(inplace=True)
+
+print(df['label'])
+
+X = np.array(df.drop(['label'],1))
+y = np.array(df['label'])
+X = preprocessing.scale(X)
+y = np.array(df['label'])
+
+X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y , test_size=0.2)
+
+clf= LinearRegression()
+clf.fit(X_train, y_train)
+confidence = clf.score(X_test,y_test)
+
+print(confidence)

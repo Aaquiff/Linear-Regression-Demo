@@ -18,6 +18,7 @@ df.fillna(-99999, inplace=True)
 
 forecast_out = int(math.ceil(0.01*len(df)))
 
+
 df['label'] = df[forecase_col].shift(-forecast_out)
 df.dropna(inplace=True)
 
